@@ -10,117 +10,7 @@
 
     <link href="css/자바스크립트_1단레이아웃.css" rel="stylesheet" />
 
-    <script>
-        window.onload = function () {
-            //1. 검색아이콘을 클릭했을 때
-            //검색창 나타나고 없어지기
-            let search = document.getElementById('search');
-            let searchBox = document.getElementById('search_box');
-            let searchBoxStyle = searchBox.style.display = 'none';
-
-
-            search.onclick = function () {
-                if (searchBox.style.display == 'none') {
-                    searchBox.style.display = 'block';
-                } else {
-                    searchBox.style.display = 'none';
-                }
-                /* 조건이 부합되지 않을 때 
-                    searchBox의 스타일은 display가 none이다.
-                */
-
-            }//search.onclick 
-
-
-            //2. 전체메뉴아이콘을 클릭했을 때
-            //메뉴 나타나고 사라지기(부드럽게 transition)
-            /* 
-            let menuBtn = 클래스명 all_menu
-            let allMenu = 클래스명all_menu 안에 있는 ul
-            let allMenuStyle = allMenu의 스타일은 opacity가 0이다.
-            */
-            let menuBtn = document.getElementsByClassName('all_menu')[0];
-            let allMenu = menuBtn.getElementsByTagName('ul')[0];
-
-            let allMenuStyle = allMenu.style.opacity = 0;
-
-
-            menuBtn.onclick = function () {
-                if (allMenu.style.opacity == '0') {
-                    allMenu.style.opacity = '1';
-                    allMenu.style.transition = '0.8s';
-                    allMenu.style.right = '0';
-                    allMenu.style.zIndex = '9';
-                } else {
-                    allMenu.style.opacity = '0';
-                    allMenu.style.right = '50px';
-                }
-            }//menuBtn.onclick
-            /* 1. menuBtn을 클릭했을 때 실행
-            2. if (allMenu의 스타일이 opacity가 0과 같을 때) 
-               allMenu의 스타일이 opaicity 1이다
-               allMenu의 스타일이 transition이 0.8초이다.
-               allMenu의 스타일이 right값이 0이다.
-               
-            3. 조건이 부합되지 않을 때
-                allMenu의 스타일이 opaicity 0이다
-                allMenu의 스타일이 transition이 0.8초이다.
-               allMenu의 스타일이 right값이 50px이다. */
-
-            //3. cont01안에 작은 이미지를 마우스 올렸을 때
-            //좌측에 있는 큰 이미지가 해당 이미지로 교체
-            //변수 => 큰 이미지(img), 작은 이미지(img)
-
-            let big = document.getElementsByClassName('big_img')[0];
-            let bigImg = big.getElementsByTagName('img')[0];
-
-            //small = 클래스명 small_img
-            //smallImg = 클래스명 small_img안에 있는 모든img태그
-            let small = document.getElementsByClassName('small_img')[0];
-            let smallImg = small.getElementsByTagName('img');
-
-            //반복문 for
-            //for(초기값; 조건식; 증감값) {실행코드}
-            for (let i = 0; i < smallImg.length; i++) {
-                smallImg[i].onmouseenter = function () {
-                    bigImg.src = this.src;
-                }
-
-                //작은이미지태그[i]에게 마우스 올렸을 때 실행
-                //큰이미지의 src경로와 내가 마우스올린
-                //src경로로 적용.
-                //마우스올렸을 때 => onmouseenter 
-            }
-
-            //4. 팝업창 띄우기
-            //팝업창 버튼을 클릭했을 때 
-            //notice_window가 보여짐
-            //닫기를 클릭했을 때 notice_window가 사라짐
-
-            let noticeBtn = document.getElementById('notice');
-            let popupWindow = document.getElementsByClassName('notice_window')[0];
-            let closeBtn = document.getElementById('btn');
-            let noticeStyle = popupWindow.style.display = 'none';
-
-            noticeBtn.onclick = function () {
-                if (popupWindow.style.display == 'none') {
-                    popupWindow.style.display = 'block';
-
-                }
-            }
-            closeBtn.onclick = function () {
-                if (popupWindow.style.display == 'block') {
-                    popupWindow.style.display = 'none';
-                }
-            }
-
-            // noticeBtn을 클릭했을 때 실행
-            // 조건식 popupWindow의 스타일이 display가 none과 같을 때
-            // popupWindow는 display block이다.
-
-            // 닫기를 클릭했을 때 팝업창은 display:none으로 적용
-        }//window.onload
-    </script>
+    
 </head>
 
 <body>
@@ -211,6 +101,57 @@
         <img src="img/wedding.jpg" alt="웨딩이미지" />
         <button id="btn" type="button">닫기</button>
     </div><!-- .notice_window end -->
+    
+    <script>
+        window.onload = function () {
+          
+
+            //1. cont01안에 작은 이미지를 마우스 올렸을 때
+            //좌측에 있는 큰 이미지가 해당 이미지로 교체
+            //변수 => 큰 이미지(img), 작은 이미지(img)
+
+            let big = document.getElementsByClassName('big_img')[0];
+            let bigImg = big.getElementsByTagName('img')[0];
+
+            //small = 클래스명 small_img
+            //smallImg = 클래스명 small_img안에 있는 모든img태그
+            let small = document.getElementsByClassName('small_img')[0];
+            let smallImg = small.getElementsByTagName('img');
+
+            //반복문 for
+            //for(초기값; 조건식; 증감값) {실행코드}
+            for (let i = 0; i < smallImg.length; i++) {
+                smallImg[i].onmouseenter = function () {
+                    bigImg.src = this.src;
+                }
+
+                 
+            }
+
+            //2. 팝업창 띄우기
+            //팝업창 버튼을 클릭했을 때 
+            //notice_window가 보여짐
+            //닫기를 클릭했을 때 notice_window가 사라짐
+
+            let noticeBtn = document.getElementById('notice');
+            let popupWindow = document.getElementsByClassName('notice_window')[0];
+            let closeBtn = document.getElementById('btn');
+            let noticeStyle = popupWindow.style.display = 'none';
+
+            noticeBtn.onclick = function () {
+                if (popupWindow.style.display == 'none') {
+                    popupWindow.style.display = 'block';
+
+                }
+            }
+            closeBtn.onclick = function () {
+                if (popupWindow.style.display == 'block') {
+                    popupWindow.style.display = 'none';
+                }
+            }
+
+           
+    </script>
 </body>
 
 </html>
