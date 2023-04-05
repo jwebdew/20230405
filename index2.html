@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        li {list-style: none;}
+        a {text-decoration: none; color: #333;}
+
+        .cont01 {
+            width: 100%;
+            height: 80vh;
+            position: relative;
+        }
+        .cont01 figure {
+            width: 100%;
+            height: 100%;
+             
+        }
+        .cont01 figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cont01 div button{
+            width: 60px;
+            height: 60px;
+            background-color: rgb(212, 12, 79);
+            color: #fff;
+            border: 0;
+            border-radius: 5px;
+            box-shadow: 3px 3px 10px rgba(212, 12, 79, 0.434);
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .cont01 div button.next {
+            right: 10px;
+            left: auto;
+        }
+        .cont01 div p {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            left: 0;
+            bottom: 50px;
+            color: #fff;
+            font-size: 20px;
+        }
+    </style>
+    
+</head>
+<body>
+    <section class="cont01">
+        <figure>
+            <img class="img_tag" src="img/img01.jpg" alt="" />
+        </figure>
+        <div>
+            <button class="prev">이전</button>
+            <button class="next">다음</button>
+            <p><span class="num">1</span> / 1</p>
+        </div>
+    </section>
+
+    <script>
+        let img1 = 'img/img01.jpg';
+        let img2 = 'img/img02.jpg';
+        let img3 = 'img/img03.jpg';
+
+        let imgList = [img1, img2, img3];
+        let numList = [1, 2, 3];
+        let img_tag = document.getElementsByClassName('img_tag')[0];
+        let prevBtn = document.getElementsByClassName('prev')[0];
+        let nextBtn = document.getElementsByClassName('next')[0];
+        let num = document.getElementsByClassName('num')[0];
+
+        let i = 0;
+
+        nextBtn.onclick = function(){
+            i++
+            if(i >= imgList.length) {
+                i = imgList.length - 1;
+                //i = 2;
+                num = 0;
+            }
+            if(i == imgList.length - 1) {
+                nextBtn.style.backgroundColor = '#ffcc00'
+            } else {
+                prevBtn.style.backgroundColor = 'rgb(212, 12, 79)'
+                // nextBtn.style.backgroundColor = 'rgb(212, 12, 79)'
+            }
+            img_tag.src = imgList[i];
+            num.innerText = numList[i];
+
+        }//prevBtn onclick
+
+         
+
+        prevBtn.onclick = function(){
+            i--;
+            if (i <= 0) {
+               i = 0;
+           }
+
+            if(i <= 0) {
+                prevBtn.style.backgroundColor = '#ffcc00'
+            } else {
+                // prevBtn.style.backgroundColor = 'rgb(212, 12, 79)'
+                nextBtn.style.backgroundColor = 'rgb(212, 12, 79)'
+            }
+
+           
+            img_tag.src = imgList[i];
+            num.innerText = numList[i];
+
+        }//prevBtn onclick
+    </script>
+</body>
+</html>
