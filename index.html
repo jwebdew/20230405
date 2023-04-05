@@ -101,20 +101,14 @@
         <img src="img/wedding.jpg" alt="웨딩이미지" />
         <button id="btn" type="button">닫기</button>
     </div><!-- .notice_window end -->
-    
-    <script>
-        window.onload = function () {
-          
 
-            //1. cont01안에 작은 이미지를 마우스 올렸을 때
-            //좌측에 있는 큰 이미지가 해당 이미지로 교체
-            //변수 => 큰 이미지(img), 작은 이미지(img)
+    <script>
+        
 
             let big = document.getElementsByClassName('big_img')[0];
             let bigImg = big.getElementsByTagName('img')[0];
 
-            //small = 클래스명 small_img
-            //smallImg = 클래스명 small_img안에 있는 모든img태그
+         
             let small = document.getElementsByClassName('small_img')[0];
             let smallImg = small.getElementsByTagName('img');
 
@@ -125,13 +119,10 @@
                     bigImg.src = this.src;
                 }
 
-                 
+               
             }
 
-            //2. 팝업창 띄우기
-            //팝업창 버튼을 클릭했을 때 
-            //notice_window가 보여짐
-            //닫기를 클릭했을 때 notice_window가 사라짐
+            //4. 팝업창 띄우기
 
             let noticeBtn = document.getElementById('notice');
             let popupWindow = document.getElementsByClassName('notice_window')[0];
@@ -152,6 +143,7 @@
 
            
     </script>
+
 </body>
 
 </html>
